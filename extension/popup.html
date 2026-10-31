@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI DSA Coach</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-logo">
+      <span class="logo-emoji">🧠</span>
+      <h1>AI DSA Coach</h1>
+    </div>
+    <div class="header-controls">
+      <button id="settings-btn" title="Settings" class="icon-btn">⚙️</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Main Dashboard View -->
+    <div id="main-view" class="view">
+      <!-- LeetCode Problem Info Card -->
+      <div id="problem-card" class="problem-card">
+        <div class="problem-meta">
+          <span class="status-label">Active Problem</span>
+          <span id="problem-difficulty" class="difficulty-badge Easy">Detecting...</span>
+        </div>
+        <h2 id="problem-title">Please open a LeetCode problem</h2>
+      </div>
+
+      <!-- Coach Actions Grid -->
+      <div class="actions-grid">
+        <button id="btn-hint" class="action-btn primary-btn">
+          <span class="btn-icon">🧠</span>
+          <span class="btn-text">Guide My Thinking</span>
+          <span id="hint-counter" class="hint-counter">Hint 1</span>
+        </button>
+        <button id="btn-check" class="action-btn">
+          <span class="btn-icon">🔍</span>
+          <span class="btn-text">Check My Code</span>
+        </button>
+        <button id="btn-approach" class="action-btn">
+          <span class="btn-icon">💡</span>
+          <span class="btn-text">Analyze Approach</span>
+        </button>
+        <button id="btn-complexity" class="action-btn">
+          <span class="btn-icon">⏱️</span>
+          <span class="btn-text">Complexity</span>
+        </button>
+        <button id="btn-pattern" class="action-btn">
+          <span class="btn-icon">🏷️</span>
+          <span class="btn-text">Detect Pattern</span>
+        </button>
+      </div>
+
+      <!-- Settings Panel Inline Controls -->
+      <div class="mode-selector-container">
+        <div class="toggle-group">
+          <label for="learning-mode-select">Learning Mode:</label>
+          <select id="learning-mode-select">
+            <option value="no-spoiler">No-Spoiler (No Code)</option>
+            <option value="standard">Standard (Progressive)</option>
+          </select>
+        </div>
+        <button id="btn-clear-history" class="text-btn">Reset Hints</button>
+      </div>
+
+      <!-- Response Area -->
+      <div class="response-section">
+        <div id="welcome-message" class="welcome-message">
+          <p>Hi! I am your AI DSA Coach. I help you understand how to solve problems on your own.</p>
+          <div class="tips-box">
+            <h4>💡 Quick Tips:</h4>
+            <ul>
+              <li>Click <strong>Guide My Thinking</strong> for step-by-step conceptual hints.</li>
+              <li>Click <strong>Check My Code</strong> to debug your current code.</li>
+              <li>Toggle <strong>No-Spoiler Mode</strong> to prevent code solutions.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="loader" class="loader-container hidden">
+          <div class="spinner"></div>
+          <p id="loader-text">Analyzing problem and thinking...</p>
+        </div>
+
+        <div id="output-container" class="output-container hidden">
+          <div id="output-content" class="output-content"></div>
+        </div>
+      </div>
+
+      <!-- Follow-up Prompt Bar -->
+      <div id="followup-container" class="followup-container hidden">
+        <input type="text" id="followup-input" placeholder="Ask a follow-up question or explain your issue..." />
+        <button id="btn-send-followup">➔</button>
+      </div>
+    </div>
+
+    <!-- Settings Overlay View -->
+    <div id="settings-view" class="view hidden">
+      <div class="settings-header">
+        <button id="back-btn" class="icon-btn">⬅️ Back</button>
+        <h2>Settings</h2>
+      </div>
+      <div class="settings-body">
+        <div class="setting-item">
+          <label for="backend-url-input">Backend URL</label>
+          <input type="text" id="backend-url-input" placeholder="http://localhost:5000" />
+          <span class="setting-help">The API URL of your AI DSA Coach server.</span>
+        </div>
+        <div class="setting-item">
+          <button id="save-settings-btn" class="save-btn">Save Configurations</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div id="connection-status" class="status-indicator offline">
+      <span class="status-dot"></span>
+      <span id="status-text">Checking server connection...</span>
+    </div>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>
